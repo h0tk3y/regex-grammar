@@ -1,3 +1,5 @@
+package ru.ifmo.ctddev.igushkin.regexGrammar
+
 import java.io.IOException
 import java.io.InputStream
 import kotlin.*;
@@ -16,7 +18,7 @@ public enum class TokenType {
     END
 
     companion object {
-        fun parse(c: Char) = when (c) {
+        fun parse(c: kotlin.Char) = when (c) {
             '(' -> LEFT_PARENTHESIS
             ')' -> RIGHT_PARENTHESIS
             '|' -> OR
@@ -29,24 +31,24 @@ public enum class TokenType {
 }
 
 public open class Token(val type: TokenType)
-public class CharToken(val character: Char) : Token(TokenType.CHARACTER)
+public class CharToken(val character: kotlin.Char) : Token(TokenType.CHARACTER)
 
-public class TokenizerException(val pos: Int, cause: Throwable? = null)
+public class TokenizerException(val pos: kotlin.Int, cause: kotlin.Throwable? = null)
 : Exception("Couldn't make token at pos $pos", cause)
 
-public class Tokenizer(val input: InputStream) {
-    private var currentChar: Char = 0.toChar()
-    public var currentPos: Int = 0; private set
+public class Tokenizer(val input: java.io.InputStream) {
+    private var currentChar: kotlin.Char = 0.toChar()
+    public var currentPos: kotlin.Int = 0; private set
     public var currentToken: Token? = null; private set
 
-    public var endOfStream: Boolean = false; private set
+    public var endOfStream: kotlin.Boolean = false; private set
 
-    private fun blank(c: Char) = when (c) {
+    private fun blank(c: kotlin.Char) = when (c) {
         ' ', '\r', '\n', '\t' -> true
         else -> false
     }
 
-    private fun nextChar(): Char {
+    private fun nextChar(): kotlin.Char {
         try {
             val c = input.read()
             if (!endOfStream) {
@@ -55,7 +57,7 @@ public class Tokenizer(val input: InputStream) {
                     endOfStream = true; 0
                 } else c).toChar()
             }
-        } catch (e: IOException) {
+        } catch (e: java.io.IOException) {
             throw TokenizerException(currentPos, e)
         }
         return currentChar

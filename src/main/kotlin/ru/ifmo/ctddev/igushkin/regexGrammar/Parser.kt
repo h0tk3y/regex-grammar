@@ -1,3 +1,5 @@
+package ru.ifmo.ctddev.igushkin.regexGrammar
+
 import java.io.ByteArrayInputStream
 import java.io.InputStream
 import java.util.ArrayList
@@ -9,7 +11,7 @@ import java.util.Collections
  */
 
 public class Node(val name: String, val literal: Boolean = false, vararg knownChildren: Node) {
-    val children: ArrayList<Node> = ArrayList();
+    val children: java.util.ArrayList<Node> = java.util.ArrayList();
 
     init {
         children.addAll(knownChildren)
@@ -28,7 +30,7 @@ public class ParserException(val pos: Int, message: String? = null, cause: Excep
         + if (message != null) ": $message"
         + if (cause != null) ": $cause")
 
-public class Parser private (val input: InputStream) {
+public class Parser private (val input: java.io.InputStream) {
 
     val tokenizer = Tokenizer(input)
 
@@ -37,8 +39,8 @@ public class Parser private (val input: InputStream) {
     }
 
     companion object {
-        public fun parse(s: String): Node = parse(ByteArrayInputStream(s.toByteArray("UTF-8")))
-        public fun parse(input: InputStream): Node {
+        public fun parse(s: String): Node = parse(java.io.ByteArrayInputStream(s.toByteArray("UTF-8")))
+        public fun parse(input: java.io.InputStream): Node {
             val parser = Parser(input)
             val result = parser.S()
             if (parser.tokenizer.currentToken!!.type != TokenType.END) {
