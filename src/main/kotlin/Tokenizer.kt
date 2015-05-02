@@ -36,7 +36,7 @@ public class TokenizerException(val pos: Int, cause: Throwable? = null)
 
 public class Tokenizer(val input: InputStream) {
     private var currentChar: Char = 0.toChar()
-    private var currentPos: Int = 0
+    public var currentPos: Int = 0; private set
     public var currentToken: Token? = null; private set
 
     public var endOfStream: Boolean = false; private set

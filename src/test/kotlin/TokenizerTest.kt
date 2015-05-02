@@ -7,11 +7,11 @@ import java.io.ByteArrayInputStream
 import java.util.ArrayList
 import org.junit.Test as test
 
-public class TokenizerTest {
+fun strToStream(s: String): ByteArrayInputStream {
+    return ByteArrayInputStream(s.toByteArray("UTF-8"))
+}
 
-    fun strToStream(s: String): ByteArrayInputStream {
-        return ByteArrayInputStream(s.toByteArray("UTF-8"))
-    }
+public class TokenizerTest {
 
     fun getTokens(tokenizer: Tokenizer): ArrayList<Token> {
         val result = ArrayList<Token>()
