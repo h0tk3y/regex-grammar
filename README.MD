@@ -1,4 +1,8 @@
-﻿Использование:
+﻿Regex grammar
+===
+![Parse tree](https://dl.dropboxusercontent.com/s/o07msz0g1f8a1nd/regex.png?dl=0)
+
+Использование:
 ===
 Перед первым запуском
     
@@ -6,7 +10,7 @@
 
 Запуск
 
-	run r(e*)g|e(x*)
+	run regex
 
 Результат -- out.png с визуализированным деревом разбора
 
